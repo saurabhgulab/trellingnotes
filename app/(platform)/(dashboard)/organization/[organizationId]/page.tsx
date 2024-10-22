@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Info } from "./_components/Info";
+import { Info } from "./_components/info.tsx";
 import { Separator } from "@/components/ui/separator";
 import { BoardList } from "./_components/BoardList";
 import { checkSubscription } from "@/lib/subscription";
