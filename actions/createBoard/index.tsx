@@ -3,13 +3,13 @@ import { auth } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
 
 import { InputType, ReturnType } from "./types";
-import prismadb from "@/lib/prismadb";
-import { CreateSafeAction } from "@/lib/createSafeAction";
+import prismadb from "@/lib/db";
+import { CreateSafeAction } from "@/lib/createSafeActions";
 import { CreateBoard } from "./schema";
 import { createAuditLog } from "@/lib/createAuditLog";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
 import { incrementAvailableCount, hasAvailableCount } from "@/lib/orgLimit";
-import { checkSubscription } from "@/lib/subscription";
+// import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();

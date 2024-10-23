@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
-import { Info } from "./_components/info.tsx";
+import { Info } from "./_components/info";
 import { Separator } from "@/components/ui/separator";
-import { BoardList } from "./_components/BoardList";
+import { BoardList } from "./_components/boardList";
 import { checkSubscription } from "@/lib/subscription";
 
 const OrganizationIdPage = () => {

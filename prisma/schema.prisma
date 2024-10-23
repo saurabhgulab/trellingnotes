@@ -20,4 +20,13 @@ model Widget {
 
 model Board {
   id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  orgId String
+  title String
+  imageId String
+  imageFullUrl String @db.String(200) 
+  imageThumbUrl String @db.String(200) 
+  imageUserName String @db.String(200) 
+  imageLinkHtml String @db.String(200) 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

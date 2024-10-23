@@ -3,7 +3,6 @@
 import { ElementRef, FC, useRef } from "react";
 import { toast } from "sonner";
 import { X } from "lucide-react";
-
 import { createBoard } from "@/actions/createBoard";
 import {
   Popover,
@@ -13,10 +12,9 @@ import {
 } from "@/components/ui/popover";
 import { useAction } from "@/hooks/useAction";
 import { Button } from "@/components/ui/button";
-
 import { FormInput } from "./formInput";
 import FormSubmit from "./formSubmit";
-import FormPicker from "./FormPicker";
+import FormPicker from "./formPicker";
 import { useRouter } from "next/navigation";
 import { useProModal } from "@/hooks/useProModal";
 

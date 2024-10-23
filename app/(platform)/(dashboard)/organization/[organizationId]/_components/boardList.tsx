@@ -6,9 +6,9 @@ import { redirect } from "next/navigation";
 
 import Hint from "@/components/hint";
 import FormPopover from "@/components/forms/formPopover";
-import prismadb from "@/lib/prismadb";
+import prismadb from "@/lib/db";
 import { Skeleton } from "@/components/ui/skeleton";
-import { MAX_FREE_BOARDS } from "@/constants/boards";
+import { MAX_FREE_BOARDS } from "@/constants/board";
 import { getAvailableCount } from "@/lib/orgLimit";
 import { checkSubscription } from "@/lib/subscription";
 
