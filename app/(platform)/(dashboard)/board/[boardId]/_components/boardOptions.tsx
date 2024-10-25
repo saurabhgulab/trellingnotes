@@ -11,7 +11,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import { deleteBoard } from "@/actions/delete-board";
+import { deleteBoard } from "@/actions/deleteBoard";
 import { useAction } from "@/hooks/useAction";
 
 interface BoardOptionsProps {

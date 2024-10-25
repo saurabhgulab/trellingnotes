@@ -1,34 +1,34 @@
-// import { auth } from "@clerk/nextjs";
-// import prismadb from "@/lib/db";
+import { auth } from "@clerk/nextjs";
+import prismadb from "@/lib/db";
 
-// const DAY_IN_MS = 86_400_000;
+const DAY_IN_MS = 86_400_000;
 
-// export const checkSubscription = async () => {
-//   const { orgId } = auth();
+export const checkSubscription = async () => {
+  const { orgId } = auth();
 
-//   if (!orgId) {
-//     return false;
-//   }
+  if (!orgId) {
+    return false;
+  }
 
-//   const orgSubscription = await prismadb.orgSubscription.findUnique({
-//     where: {
-//       orgId,
-//     },
-//     select: {
-//       stripeSubsriptionId: true,
-//       stripeCurrentPeriodEnd: true,
-//       stripeCustomerId: true,
-//       stripePriceId: true,
-//     },
-//   });
+  const orgSubscription = await prismadb.orgSubscription.findUnique({
+    where: {
+      orgId,
+    },
+    select: {
+      stripeSubsriptionId: true,
+      stripeCurrentPeriodEnd: true,
+      stripeCustomerId: true,
+      stripePriceId: true,
+    },
+  });
 
-//   if (!orgSubscription) {
-//     return false;
-//   }
+  if (!orgSubscription) {
+    return false;
+  }
 
-//   const isValid =
-//     orgSubscription.stripePriceId &&
-//     orgSubscription.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now();
+  const isValid =
+    orgSubscription.stripePriceId &&
+    orgSubscription.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now();
 
-//   return !!isValid;
-// };
+  return !!isValid;
+};

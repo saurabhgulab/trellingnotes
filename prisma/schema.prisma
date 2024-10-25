@@ -29,4 +29,29 @@ model Board {
   imageLinkHtml String @db.String(200) 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  lists List[]
+}
+
+model List{
+  id String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title String
+  order Int
+  cards Card[]
+  boardId String
+  board Board @relation(fields: [boardId],references: [id],onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([boardId])
+}
+
+model Card{
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title String
+  order Int
+  description String?  @db.String(200)
+  listId String @db.String(200)
+  list List @relation(fields: [listId],references: [id],onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index([listId])
 }
