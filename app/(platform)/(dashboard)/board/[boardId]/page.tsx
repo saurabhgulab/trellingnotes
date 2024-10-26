@@ -1,8 +1,8 @@
-import prismadb from "@/lib/prismadb";
+import prismadb from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import React, { FC } from "react";
-import ListContainer from "./_components/ListContainer";
+import ListContainer from "./_components/listContainer";
 
 interface BoardIdPageProps {
   params: {

@@ -8,7 +8,7 @@ import { useAction } from "@/hooks/useAction";
 import { updateListOrder } from "@/actions/update-list-order";
 import { updateCardOrder } from "@/actions/update-card-order";
 
-import ListForm from "./ListForm";
+import ListForm from "./listForm";
 import ListItem from "./ListItem";
 import { toast } from "sonner";
 
@@ -80,7 +80,7 @@ const ListContainer: FC<ListContainerProps> = ({ data, boardId }) => {
 
     // user moves a card
     if (type === "card") {
-      let newOrderedData = [...orderedData];
+      const newOrderedData = [...orderedData];
 
       //  source and destination lsit
       const sourceList = newOrderedData.find(
