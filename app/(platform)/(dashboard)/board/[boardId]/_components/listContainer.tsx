@@ -5,11 +5,11 @@ import { DragDropContext, Droppable } from "@hello-pangea/dnd";
 
 import { ListWithCards } from "@/types";
 import { useAction } from "@/hooks/useAction";
-import { updateListOrder } from "@/actions/update-list-order";
-import { updateCardOrder } from "@/actions/update-card-order";
+import { updateListOrder } from "@/actions/updateListOrder";
+import { updateCardOrder } from "@/actions/updateCardOrder";
 
 import ListForm from "./listForm";
-import ListItem from "./ListItem";
+import ListItem from "./listItem";
 import { toast } from "sonner";
 
 interface ListContainerProps {
@@ -21,7 +21,6 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number) {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
-
   return result;
 }
 
@@ -50,6 +49,7 @@ const ListContainer: FC<ListContainerProps> = ({ data, boardId }) => {
     setOrderedData(data);
   }, [data]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onDragEnd = (result: any) => {
     const { destination, source, type } = result;
 
@@ -65,7 +65,6 @@ const ListContainer: FC<ListContainerProps> = ({ data, boardId }) => {
       return;
     }
 
-    //  user moves a list
     if (type === "list") {
       const items = reorder(orderedData, source.index, destination.index).map(
         (item, index) => ({
@@ -82,7 +81,7 @@ const ListContainer: FC<ListContainerProps> = ({ data, boardId }) => {
     if (type === "card") {
       const newOrderedData = [...orderedData];
 
-      //  source and destination lsit
+      //  source and destination list
       const sourceList = newOrderedData.find(
         (list) => list.id === source.droppableId
       );
