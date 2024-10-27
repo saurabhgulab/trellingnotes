@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  FC,
-  forwardRef,
-  useRef,
-  ElementRef,
-  KeyboardEventHandler,
-} from "react";
+import { forwardRef, useRef, ElementRef, KeyboardEventHandler } from "react";
 import { Plus, X } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useOnClickOutside, useEventListener } from "usehooks-ts";
