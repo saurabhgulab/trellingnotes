@@ -2,10 +2,8 @@
 
 import { ElementRef, FC, useRef, useState } from "react";
 import { Draggable, Droppable } from "@hello-pangea/dnd";
-
 import { ListWithCards } from "@/types";
 import { cn } from "@/lib/utils";
-
 import ListHeader from "./listHeader";
 import { CardForm } from "./cardForm";
 import CardItem from "./cardItem";

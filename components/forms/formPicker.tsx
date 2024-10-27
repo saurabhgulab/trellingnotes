@@ -9,7 +9,7 @@ import { useFormStatus } from "react-dom";
 import { cn } from "@/lib/utils";
 import { unsplash } from "@/lib/unsplash";
 import { defaultImages } from "@/constants/images";
-import FormErrors from "./FormErrors";
+import FormErrors from "./formErrors";
 
 interface ImageData {
   id: string;

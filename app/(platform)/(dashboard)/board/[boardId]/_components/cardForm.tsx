@@ -11,12 +11,11 @@ import { Plus, X } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useOnClickOutside, useEventListener } from "usehooks-ts";
 import { toast } from "sonner";
-
 import FormSubmit from "@/components/forms/formSubmit";
 import { FormTextArea } from "@/components/forms/formTextArea";
 import { Button } from "@/components/ui/button";
 import { useAction } from "@/hooks/useAction";
-import { createCard } from "@/actions/create-card";
+import { createCard } from "@/actions/createCard";
 
 interface CardFormProps {
   listId: string;
@@ -76,7 +75,7 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
             id="title"
             onKeyDown={onTextAreaKeyDown}
             ref={ref}
-            placeholder="Enter a title for this card.."
+            placeholder="Enter title"
             errors={fieldErrors}
           />
           <input hidden id="listId" name="listId" value={listId} />

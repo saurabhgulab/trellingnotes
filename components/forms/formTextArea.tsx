@@ -1,12 +1,11 @@
 "use client";
 
 import { KeyboardEventHandler, forwardRef } from "react";
-
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import FormErrors from "./FormErrors";
 import { useFormStatus } from "react-dom";
+import FormErrors from "./formErrors";
 
 interface FormTextAreaProps {
   id: string;
@@ -62,7 +61,7 @@ export const FormTextArea = forwardRef<HTMLTextAreaElement, FormTextAreaProps>(
             id={id}
             disabled={pending || disabled}
             className={cn(
-              "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 outline-none  shadow-sm",
+              "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 outline-none shadow-sm",
               className
             )}
             aria-describedby={`${id}-error`}
