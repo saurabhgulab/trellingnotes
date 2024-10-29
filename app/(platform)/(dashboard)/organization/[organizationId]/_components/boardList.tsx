@@ -3,7 +3,6 @@ import React from "react";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-
 import Hint from "@/components/hint";
 import FormPopover from "@/components/forms/formPopover";
 import prismadb from "@/lib/db";

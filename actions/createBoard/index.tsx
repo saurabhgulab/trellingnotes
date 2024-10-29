@@ -9,7 +9,7 @@ import { CreateBoard } from "./schema";
 import { createAuditLog } from "@/lib/createAuditLog";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
 import { incrementAvailableCount, hasAvailableCount } from "@/lib/orgLimit";
-// import { checkSubscription } from "@/lib/subscription";
+import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
