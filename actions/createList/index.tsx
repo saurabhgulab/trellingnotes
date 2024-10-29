@@ -2,12 +2,10 @@
 
 import { auth } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
-
 import prismadb from "@/lib/db";
 import { CreateSafeAction } from "@/lib/createSafeActions";
 import { createAuditLog } from "@/lib/createAuditLog";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
-
 import { CreateList } from "./schema";
 import { InputType, ReturnType } from "./types";
 
