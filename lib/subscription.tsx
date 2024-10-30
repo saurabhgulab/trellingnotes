@@ -1,10 +1,11 @@
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import prismadb from "@/lib/db";
 
 const DAY_IN_MS = 86_400_000;
 
 export const checkSubscription = async () => {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     return false;

@@ -1,11 +1,12 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import prismadb from "@/lib/db";
 import { ActivityItem } from "@/components/activityItem";
 
 export const ActivityList = async () => {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     redirect("/select-org");

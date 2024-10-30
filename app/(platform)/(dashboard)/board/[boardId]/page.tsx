@@ -1,5 +1,6 @@
 import prismadb from "@/lib/db";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React, { FC } from "react";
 import ListContainer from "./_components/listContainer";
@@ -11,7 +12,7 @@ interface BoardIdPageProps {
 }
 
 const BoardIdPage: FC<BoardIdPageProps> = async ({ params }) => {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     redirect("/select-org");

@@ -1,9 +1,10 @@
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import prismadb from "@/lib/db";
 import { MAX_FREE_BOARDS } from "@/constants/board";
 
 export const incrementAvailableCount = async () => {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     throw new Error("Unauhtorized");
@@ -35,7 +36,7 @@ export const incrementAvailableCount = async () => {
 };
 
 export const decreaseAvailableCount = async () => {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     throw new Error("Unauthorized");
@@ -67,7 +68,7 @@ export const decreaseAvailableCount = async () => {
 };
 
 export const hasAvailableCount = async () => {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     throw new Error("Unauthorized");
@@ -87,7 +88,7 @@ export const hasAvailableCount = async () => {
 };
 
 export const getAvailableCount = async () => {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     return 0;

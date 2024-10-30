@@ -2,6 +2,7 @@ import { HelpCircle, User2 } from "lucide-react";
 import React from "react";
 import Link from "next/link";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Hint from "@/components/hint";
 import FormPopover from "@/components/forms/formPopover";
@@ -12,7 +13,7 @@ import { getAvailableCount } from "@/lib/orgLimit";
 import { checkSubscription } from "@/lib/subscription";
 
 export const BoardList = async () => {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     return redirect("/select-org");

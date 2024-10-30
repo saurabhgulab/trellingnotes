@@ -1,5 +1,6 @@
 "use server";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
 import { InputType, ReturnType } from "./types";
@@ -12,7 +13,7 @@ import { incrementAvailableCount, hasAvailableCount } from "@/lib/orgLimit";
 import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-  const { userId, orgId } = auth();
+  const { userId, orgId } = authMiddleware();
 
   if (!userId || !orgId) {
     return {

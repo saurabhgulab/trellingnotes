@@ -1,6 +1,7 @@
 "use server";
 
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import prismadb from "@/lib/db";
 import { CreateSafeAction } from "@/lib/createSafeActions";
@@ -10,7 +11,7 @@ import { CreateList } from "./schema";
 import { InputType, ReturnType } from "./types";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-  const { orgId, userId } = auth();
+  const { orgId, userId } = authMiddleware();
 
   if (!userId || !orgId) {
     return {

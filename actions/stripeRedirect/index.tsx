@@ -12,7 +12,7 @@ import { StripeRedirect } from "./schema";
 import { revalidatePath } from "next/cache";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-  const { orgId, userId } = auth();
+  const { orgId, userId } = authMiddleware();
   const user = await currentUser();
 
   if (!userId || !orgId) {

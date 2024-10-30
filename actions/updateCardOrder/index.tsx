@@ -1,53 +1,52 @@
-"use server"
+"use server";
 
-import { auth } from "@clerk/nextjs"
-import {InputType,ReturnType} from './types'
-import prismadb from "@/lib/db"
-import { revalidatePath } from "next/cache"
-import { CreateSafeAction } from "@/lib/createSafeActions"
-import { UpdateCardOrder } from "./schema"
+import { auth } from "@clerk/nextjs";
+import { InputType, ReturnType } from "./types";
+import prismadb from "@/lib/db";
+import { revalidatePath } from "next/cache";
+import { CreateSafeAction } from "@/lib/createSafeActions";
+import { UpdateCardOrder } from "./schema";
 
-const handler = async (data:InputType):Promise<ReturnType>=>{
-  const {orgId,userId} = auth()
+const handler = async (data: InputType): Promise<ReturnType> => {
+  const { orgId, userId } = authMiddleware();
 
-  if(!userId || !orgId){
+  if (!userId || !orgId) {
     return {
-      error:"Unauthorized"
-    }
+      error: "Unauthorized",
+    };
   }
 
-  const {items,boardId} = data
+  const { items, boardId } = data;
 
-  let updatedCards
+  let updatedCards;
 
   try {
-    const transaction =items.map((card)=>
-     prismadb.card.update({
-      where:{
-        id:card.id,
-        list:{
-          board:{
-            orgId
-          }
-        }
-      },
-      data:{
-        order:card.order,
-        listId:card.listId
-      }
-     })
-    )
+    const transaction = items.map((card) =>
+      prismadb.card.update({
+        where: {
+          id: card.id,
+          list: {
+            board: {
+              orgId,
+            },
+          },
+        },
+        data: {
+          order: card.order,
+          listId: card.listId,
+        },
+      })
+    );
 
-    updatedCards = await prismadb.$transaction(transaction)
+    updatedCards = await prismadb.$transaction(transaction);
   } catch (error) {
-     return {
-      error:"Failed to reorder"
-     }
+    return {
+      error: "Failed to reorder",
+    };
   }
 
-  revalidatePath(`/board/${boardId}`)
-  return {data:updatedCards}
-}
+  revalidatePath(`/board/${boardId}`);
+  return { data: updatedCards };
+};
 
-
-export const updateCardOrder = CreateSafeAction(UpdateCardOrder,handler)
+export const updateCardOrder = CreateSafeAction(UpdateCardOrder, handler);

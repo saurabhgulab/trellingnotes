@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import prismadb from "@/lib/db";
 import { Board } from "@prisma/client";
 import BoardTitleForm from "./boardTitleForm";

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import { notFound, redirect } from "next/navigation";
 
 import prismadb from "@/lib/db";
@@ -10,7 +11,7 @@ export async function generateMetadata({
 }: {
   params: { boardId: string };
 }) {
-  const { orgId } = auth();
+  const { orgId } = authMiddleware();
 
   if (!orgId) {
     return {

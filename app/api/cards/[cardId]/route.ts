@@ -1,5 +1,6 @@
 import prismadb from "@/lib/db";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function GET(
@@ -7,7 +8,7 @@ export async function GET(
   { params }: { params: { cardId: string } }
 ) {
   try {
-    const { userId, orgId } = auth();
+    const { userId, orgId } = authMiddleware();
 
     if (!userId || !orgId) {
       return new NextResponse("Unauthorized", { status: 401 });

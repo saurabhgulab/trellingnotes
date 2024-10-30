@@ -4,7 +4,8 @@ import { Separator } from "@/components/ui/separator";
 import { BoardList } from "./_components/boardList";
 import { checkSubscription } from "@/lib/subscription";
 
-const OrganizationIdPage = () => {
+const OrganizationIdPage = async () => {
+  const isPro = await checkSubscription();
   return (
     <>
       <div className="w-full mb-20">

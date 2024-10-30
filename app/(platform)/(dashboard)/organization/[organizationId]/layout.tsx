@@ -1,10 +1,11 @@
 import { FC } from "react";
 import { OrgControl } from "./_components/orgControl";
 import { startCase } from "lodash";
-import { auth } from "@clerk/nextjs";
+import { auth, useAuth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 
 export async function generateMetadata() {
-  const { orgSlug } = auth();
+  const { orgSlug } = authMiddleware();
 
   return {
     title: startCase(orgSlug || "organization"),

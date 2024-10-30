@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { auth } from "@clerk/nextjs";
+import { authMiddleware } from "@clerk/nextjs/server";
 import { CreateSafeAction } from "@/lib/createSafeActions";
 import prismadb from "@/lib/db";
 import { createAuditLog } from "@/lib/createAuditLog";
@@ -10,7 +11,7 @@ import { InputType, ReturnType } from "./types";
 import { CopyList } from "./schema";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
-  const { orgId, userId } = auth();
+  const { orgId, userId } = authMiddleware();
 
   if (!userId || !orgId) {
     return {
