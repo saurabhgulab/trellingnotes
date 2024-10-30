@@ -29,6 +29,7 @@ export const BoardList = async () => {
 
   const availableCount = await getAvailableCount();
   const isPro = await checkSubscription();
+
   return (
     <div className="space-y-4">
       <div className="flex items-center font-semibold text-lg text-neutral-700">

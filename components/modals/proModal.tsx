@@ -5,7 +5,7 @@ import { useProModal } from "@/hooks/useProModal";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { useAction } from "@/hooks/useAction";
-import { stripeRedirect } from "@/actions/stripe-redirect";
+import { stripeRedirect } from "@/actions/stripeRedirect";
 import { toast } from "sonner";
 
 export const ProModal = () => {
@@ -23,6 +23,7 @@ export const ProModal = () => {
   const onClick = () => {
     execute({});
   };
+
   return (
     <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
       <DialogContent className="max-w-md p-0 overflow-hidden">
@@ -31,10 +32,10 @@ export const ProModal = () => {
         </div>
         <div className="text-neutral-700 mx-auto space-y-6 p-6">
           <h2 className="font-semibold text-xl">
-            Upgrade to Taskify Pro Today!
+            Upgrade to TrellingNotes Pro Today!
           </h2>
           <p className="text-xs font-semibold text-neutral-600">
-            Explore the best of Taskify
+            Explore the best of TrellingNotes
           </p>
           <div className="pl-3">
             <ul className="text-sm list-disc">
