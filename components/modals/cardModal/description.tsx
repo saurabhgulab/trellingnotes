@@ -11,7 +11,7 @@ import { FormTextArea } from "@/components/forms/formTextArea";
 import FormSubmit from "@/components/forms/formSubmit";
 import { Button } from "@/components/ui/button";
 import { useAction } from "@/hooks/useAction";
-import { updateCard } from "@/actions/updateCard";
+import { updateCard } from "@/actions/update-card";
 import { toast } from "sonner";
 
 interface DescriptionProps {

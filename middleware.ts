@@ -4,7 +4,8 @@ import { clerkMiddleware, redirectToSignIn } from "@clerk/nextjs/server";
 // const isProtectedRoute = createRouteMatcher(["/dashboard(.*)", "/forum(.*)"]);
 
 export default clerkMiddleware({
-  publicRoutes: ["/", "/api/webhook"],
+  publicRoutes: ["/", "/api/"],
+
   afterAuth(auth, req) {
     if (!auth.userId && !auth.isPublicRoute) {
       return redirectToSignIn({ returnBackUrl: req.url });
@@ -15,13 +16,15 @@ export default clerkMiddleware({
       req.nextUrl.pathname !== "/org-selection"
     ) {
       const orgSelection = new URL("/select-org", req.url);
+
       return NextResponse.redirect(orgSelection);
     }
     if (auth.userId && !auth.isPublicRoute) {
       let path = "/select-org";
-
+      console.log("Error from middleware line 24");
       if (auth.orgId) {
         path = `/organization/${auth.orgId}`;
+        console.log("Error from middleware line 27");
       }
       const orgSelection = new URL(path, req.url);
       return NextResponse.redirect(orgSelection);

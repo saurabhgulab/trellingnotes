@@ -9,7 +9,7 @@ import { FormInput } from "@/components/forms/formInput";
 import { CardWithList } from "@/types";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAction } from "@/hooks/useAction";
-import { updateCard } from "@/actions/updateCard";
+import { updateCard } from "@/actions/update-card";
 
 interface HeaderProps {
   data: CardWithList;
